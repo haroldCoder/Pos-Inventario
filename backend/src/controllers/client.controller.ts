@@ -16,8 +16,8 @@ export default class ClientsController{
     @Post("/api/clients")
     @Bind(Request(), Response())
     async registerClient(req: express.Request, res: express.Response){
-        const {name, address} = req.body;
-        const {code, msg} = await this.client.addClient(name, address);
+        const {name, address, last_name, contact, password, birth_date, genere} = req.body;
+        const {code, msg} = await this.client.addClient(name, address, last_name, contact, password, birth_date, genere);
         res.status(code).json(msg);
     }
 }

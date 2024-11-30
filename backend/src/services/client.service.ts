@@ -14,9 +14,10 @@ export default class ClientService extends ConnectionDB{
         }
     }
 
-    async addClient(nombre: string, correo: string){
+    async addClient(nombre: string, correo: string, apellido: string, contacto: string, password: string, fecha_nacimiento: string, genero: string){
         try{
-            await this.connect.query(`INSERT INTO clientes(nombre, correo) VALUES("${nombre}", "${correo}")`);
+            await this.connect.query(`INSERT INTO clientes(nombre, correo, apellido, contacto, password, fecha_nacimiento, genero) 
+                VALUES("${nombre}", "${correo}", "${contacto}", "${password}", "${fecha_nacimiento}", "${genero}")`);
             return {msg: "Client created", code: HttpStatus.CREATED};
         }
         catch(err){
